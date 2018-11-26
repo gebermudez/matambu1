@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="data/Cantones_0.js"></script>
+        <script src="data/TCU_103_1.js"></script>
+        <script src="data/TCU_102_2.js"></script>
+        <script src="data/TCU_105_3.js"></script>
+        <script src="data/TCU_106_4.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[8.37019254436,-86.3066280359],[11.5265680405,-81.5100399457]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var measureControl = new L.Control.Measure({
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_Cantones_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NCANTON'] !== null ? Autolinker.link(String(feature.properties['NCANTON'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODNUM'] !== null ? Autolinker.link(String(feature.properties['CODNUM'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NPROVINCIA'] !== null ? Autolinker.link(String(feature.properties['NPROVINCIA'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Cantones_0_0() {
+            return {
+                pane: 'pane_Cantones_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.27)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(31,120,180,0.27)',
+            }
+        }
+        map.createPane('pane_Cantones_0');
+        map.getPane('pane_Cantones_0').style.zIndex = 400;
+        map.getPane('pane_Cantones_0').style['mix-blend-mode'] = 'normal';
+        var layer_Cantones_0 = new L.geoJson(json_Cantones_0, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Cantones_0',
+            onEachFeature: pop_Cantones_0,
+            style: style_Cantones_0_0,
+        });
+        bounds_group.addLayer(layer_Cantones_0);
+        map.addLayer(layer_Cantones_0);
+        function pop_TCU_103_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FID_CENSO_'] !== null ? Autolinker.link(String(feature.properties['FID_CENSO_'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PROVINCIA'] !== null ? Autolinker.link(String(feature.properties['PROVINCIA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NCANTON'] !== null ? Autolinker.link(String(feature.properties['NCANTON'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NDISTRITO'] !== null ? Autolinker.link(String(feature.properties['NDISTRITO'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODDIST'] !== null ? Autolinker.link(String(feature.properties['CODDIST'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Proyectos'] !== null ? Autolinker.link(String(feature.properties['Proyectos'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nombre'] !== null ? Autolinker.link(String(feature.properties['Nombre'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Area de accion'] !== null ? Autolinker.link(String(feature.properties['Area de accion'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Sede'] !== null ? Autolinker.link(String(feature.properties['Sede'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TCU_103_1_0() {
+            return {
+                pane: 'pane_TCU_103_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(84,129,142,1.0)',
+            }
+        }
+        map.createPane('pane_TCU_103_1');
+        map.getPane('pane_TCU_103_1').style.zIndex = 401;
+        map.getPane('pane_TCU_103_1').style['mix-blend-mode'] = 'normal';
+        var layer_TCU_103_1 = new L.geoJson(json_TCU_103_1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_TCU_103_1',
+            onEachFeature: pop_TCU_103_1,
+            style: style_TCU_103_1_0,
+        });
+        bounds_group.addLayer(layer_TCU_103_1);
+        map.addLayer(layer_TCU_103_1);
+        function pop_TCU_102_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FID_CENSO_'] !== null ? Autolinker.link(String(feature.properties['FID_CENSO_'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PROVINCIA'] !== null ? Autolinker.link(String(feature.properties['PROVINCIA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NCANTON'] !== null ? Autolinker.link(String(feature.properties['NCANTON'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NDISTRITO'] !== null ? Autolinker.link(String(feature.properties['NDISTRITO'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODDIST'] !== null ? Autolinker.link(String(feature.properties['CODDIST'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Proyectos'] !== null ? Autolinker.link(String(feature.properties['Proyectos'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nombre'] !== null ? Autolinker.link(String(feature.properties['Nombre'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Area de accion'] !== null ? Autolinker.link(String(feature.properties['Area de accion'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Sede'] !== null ? Autolinker.link(String(feature.properties['Sede'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TCU_102_2_0() {
+            return {
+                pane: 'pane_TCU_102_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(219,165,133,1.0)',
+            }
+        }
+        map.createPane('pane_TCU_102_2');
+        map.getPane('pane_TCU_102_2').style.zIndex = 402;
+        map.getPane('pane_TCU_102_2').style['mix-blend-mode'] = 'normal';
+        var layer_TCU_102_2 = new L.geoJson(json_TCU_102_2, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_TCU_102_2',
+            onEachFeature: pop_TCU_102_2,
+            style: style_TCU_102_2_0,
+        });
+        bounds_group.addLayer(layer_TCU_102_2);
+        map.addLayer(layer_TCU_102_2);
+        function pop_TCU_105_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FID_CENSO_'] !== null ? Autolinker.link(String(feature.properties['FID_CENSO_'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PROVINCIA'] !== null ? Autolinker.link(String(feature.properties['PROVINCIA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NCANTON'] !== null ? Autolinker.link(String(feature.properties['NCANTON'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NDISTRITO'] !== null ? Autolinker.link(String(feature.properties['NDISTRITO'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODDIST'] !== null ? Autolinker.link(String(feature.properties['CODDIST'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Proyectos'] !== null ? Autolinker.link(String(feature.properties['Proyectos'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nombre'] !== null ? Autolinker.link(String(feature.properties['Nombre'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Area de accion'] !== null ? Autolinker.link(String(feature.properties['Area de accion'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Sede'] !== null ? Autolinker.link(String(feature.properties['Sede'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TCU_105_3_0() {
+            return {
+                pane: 'pane_TCU_105_3',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(7,179,96,1.0)',
+            }
+        }
+        map.createPane('pane_TCU_105_3');
+        map.getPane('pane_TCU_105_3').style.zIndex = 403;
+        map.getPane('pane_TCU_105_3').style['mix-blend-mode'] = 'normal';
+        var layer_TCU_105_3 = new L.geoJson(json_TCU_105_3, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_TCU_105_3',
+            onEachFeature: pop_TCU_105_3,
+            style: style_TCU_105_3_0,
+        });
+        bounds_group.addLayer(layer_TCU_105_3);
+        map.addLayer(layer_TCU_105_3);
+        function pop_TCU_106_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FID_CENSO_'] !== null ? Autolinker.link(String(feature.properties['FID_CENSO_'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PROVINCIA'] !== null ? Autolinker.link(String(feature.properties['PROVINCIA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NCANTON'] !== null ? Autolinker.link(String(feature.properties['NCANTON'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NDISTRITO'] !== null ? Autolinker.link(String(feature.properties['NDISTRITO'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODDIST'] !== null ? Autolinker.link(String(feature.properties['CODDIST'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Proyectos'] !== null ? Autolinker.link(String(feature.properties['Proyectos'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nombre'] !== null ? Autolinker.link(String(feature.properties['Nombre'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Area de accion'] !== null ? Autolinker.link(String(feature.properties['Area de accion'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Sede'] !== null ? Autolinker.link(String(feature.properties['Sede'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TCU_106_4_0() {
+            return {
+                pane: 'pane_TCU_106_4',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(232,66,77,1.0)',
+            }
+        }
+        map.createPane('pane_TCU_106_4');
+        map.getPane('pane_TCU_106_4').style.zIndex = 404;
+        map.getPane('pane_TCU_106_4').style['mix-blend-mode'] = 'normal';
+        var layer_TCU_106_4 = new L.geoJson(json_TCU_106_4, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_TCU_106_4',
+            onEachFeature: pop_TCU_106_4,
+            style: style_TCU_106_4_0,
+        });
+        bounds_group.addLayer(layer_TCU_106_4);
+        map.addLayer(layer_TCU_106_4);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/TCU_106_4.png" /> TCU_106': layer_TCU_106_4,'<img src="legend/TCU_105_3.png" /> TCU_105': layer_TCU_105_3,'<img src="legend/TCU_102_2.png" /> TCU_102': layer_TCU_102_2,'<img src="legend/TCU_103_1.png" /> TCU_103': layer_TCU_103_1,'<img src="legend/Cantones_0.png" /> Cantones': layer_Cantones_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
